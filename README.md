@@ -67,3 +67,189 @@ Após o Download, salve o arquivo '.csv' em um local seguro e vá no botão "Don
 </div>
 
 -----
+
+## Criando a instância EC2 
+
++ Selecione o serviço de EC2 no console AWS e vá em "Instances" no menu lateral esquerdo. Na janela que será aberta vá no botão "Launch instances".
+
+<div align="center">
+<img src="/src/print-EC21.jpg" width="950px">
+</div>
+
+Com a janela de criação de instâncias EC2 aberta, comece a preencher os campos com os requisitos.
+
+<div align="center">
+<img src="/src/print-EC21.1.jpg" width="950px">
+</div>
+
++ No campo "Name" digite o nome da sua EC2.
+
++ Em "Application and OS Images (Amazon Machine Image)" busque pela AMI "Amazon Linux 2". Abrirá uma janela com o resultado da sua pesquisa, então escolha a correta clicando no botão "Select".
+
+<div align="center">
+<img src="/src/print-EC23.1.jpg" width="550px">
+</div>
+
++ No campo "Instance type" escolha a família da máquina que rodará a sua EC2, a "t3.small".
+
+<div align="center">
+<img src="/src/print-EC23.2.jpg" width="550px">
+</div>
+
++ Em "Key pair(login)" escolha o par de chaves que dará acesso a sua instância EC2. Se não tiver um par de chaves já criado, clique em "Create key pair".
+Na tela que se abrirá digite o nome do seu par de chaves, seguido do tipo - RSA - e o formato da chave privada como ".pem".
+
+<div align="center">
+<img src="/src/print-EC24.jpg" width="550px">
+</div>
+
+Será gerado o arquivo ".pem" com a sua chave privada, **guarde-o em segurança, pois é o que dá acesso à sua instância EC2**.
+
++ Em "Network settings" você pode selecionar um Security group já criado ou criar um, seguindo os seguintes passos:
+	1. Escolha o nome do seu Security group e descreva para que ele servirá.
+	2. Em "Inbound security groups rules" você aplica as regras de acesso às portas de comunicação desejadas. Nesse caso, escolheremos as seguintes regras:
+
+##
+| Type         | Protocol | Port Range | Source Type | Source      |
+|--------------|----------|------------|-------------|-------------|
+| SSH          | TCP      | 22         | Anywhere    | 0.0.0.0/0   |
+| Custom TCP   | TCP      | 111        | Anywhere    | 0.0.0.0/0   |
+| Custom UDP   | UDP      | 111        | Anywhere    | 0.0.0.0/0   |
+| Custom TCP   | TCP      | 2049       | Anywhere    | 0.0.0.0/0   |
+| Custom UDP   | UDP      | 2049       | Anywhere    | 0.0.0.0/0   |
+| Custom TCP   | TCP      | 80         | Anywhere    | 0.0.0.0/0   |
+| Custom TCP   | TCP      | 443        | Anywhere    | 0.0.0.0/0   |
+##
+
+<div align="center">
+<img src="/src/print-rule1.jpg" width="450px">
+</div>
+<div align="center">
+<img src="/src/print-rule2.jpg" width="450px">
+</div>
+<div align="center">
+<img src="/src/print-rule3.jpg" width="450px">
+</div>
+<div align="center">
+<img src="/src/print-rule4.jpg" width="450px">
+</div>
+<div align="center">
+<img src="/src/print-rule5.jpg" width="450px">
+</div>
+<div align="center">
+<img src="/src/print-rule6.jpg" width="450px">
+</div>
+<div align="center">
+<img src="/src/print-rule7.jpg" width="450px">
+</div>
+
++ Em "Configure storage" defina o volume do armazenamento e o tipo de disco. Nesse caso, usaremos  16GB e gp2 (General purpose SSD).
+
+<div align="center">
+<img src="/src/print-volume.jpg" width="550px">
+</div>
+
++ Com tudo isso feito, vá no botão "Launch instance" abaixo do sumário da sua instância em criação (onde você pode conferir as configurações feitas por você de forma mais resumida) para criar a sua instância.
+
+<div align="center">
+<img src="/src/print-summary.jpg" width="245px">
+</div>
+
+- Agora que sua instância foi criada, volte em "Instances" no painel lateral esquerdo para conferir o status da sua EC2.
+
+<div align="center">
+<img src="/src/print-ec2iniciando.jpg" width="950px">
+</div>
+
+- Pode ser que demore alguns segundos/minutos para que sua instância EC2 esteja 100% pronta para uso, então atualize em seguida (no botão de seta ao lado do botão "Connect") até que apareça "Running" abaixo de "Instance state" e "2/2 checks passed" abaixo de "Status check".
+
+<div align="center">
+<img src="/src/print-ec2pronta.jpg" width="950px">
+</div>
+
+-----
+
+## Gerando e anexando 1 elastic IP à instância EC2
+1. Dentro do menu lateral esquerdo no serviço de EC2 vá em "Elastic IPs".
+Ali clique em "Allocate Elastic IP address" para gerar o seu Elastic IP. 
+
+<div align="center">
+<img src="/src/print-elastic-ip1.jpg" width="850px">
+</div>
+
+Escolha a região desejada, adicione tags se quiser e clique no botão de "Allocate"
+
+<div align="center">
+<img src="/src/print-elastic-ip2.jpg" width="850px">
+</div>
+
+2. Agora que você gerou um Elastic IP, devemos anexar à sua EC2 criada anteriormente. 
+Ainda em "Elastic IPs" selecione o Elastic IP gerado, vá no botão "Actions" e em "Associate Elastic IP address".
+
+<div align="center">
+<img src="/src/print-elastic-ip3.jpg" width="850px">
+</div>
+
+Na aba que foi aberta, devemos selecionar "Instance", e no campo "Choose an instance" de Instance escolha a instância que criamos. 
+
+<div align="center">
+<img src="/src/print-elastic-ip4.jpg" width="850px">
+</div>
+
+Em "Private IP address", escolha o seu endereço de IP que será associado ao Elastic IP
+
+<div align="center">
+<img src="/src/print-elastic-ip5.jpg" width="850px">
+</div>
+
+Com essas informações configuradas, vá em "Associate". 
+
+-----
+
+## Gerando uma chave pública para acesso ao ambiente
+
+Para gerar uma chave pública no Linux basta usar a linha de comando:
+	"ssh-keygen -y -f /caminho/para/sua-chave-privada.pem > chave-publica.pub"
+
+1. No Windows, abra o programa PuttyGen. Vá em "Load" e carregue o seu arquivo ".pem" do seu Key Pair que está vinculado à sua instância EC2.
+
+<div align="center">
+	<img src="/src/puttygen-1.jpg" width="450px">
+</div>
+
+2. Clique primeiro no botão "Save public key" para gerar a sua chave pública. Será criado um arquivo com essa chave, salve no local desejado, ela será o que irá possibilitar o acesso de outras pessoas à sua instância.
+
+3. Clique em "Save private key" e será gerada uma chave em ".ppk", porque ao fazer isso convertemos o arquivo ".pem" em ".ppk" para podermos utilizar via Putty e, assim, executar o acesso na sua instância EC2. Salve no local desejado.
+
+<div align="center">
+	<img src="/src/puttygen-2.jpg" width="450px">
+</div>
+
+## Como acessar via Putty
+1. Abra o programa Putty e no campo "Host Name (or IP address)" cole o IP Público da sua instância EC2. Deixe a porta como 22.
+
+<div align="center">
+	<img src="/src/putty-1.jpg" width="450px">
+</div>
+
+2. No menu lateral esquerdo do Putty, vá em  "Connection", depois em "SSH", em "Auth" e em "Credentials".
+3. No campo "Private key file for authentication:" escolha o caminho do arquivo .ppk da sua chave privada gerada pelo PuttyGen. 
+	
+<div align="center">
+	<img src="/src/putty-2.jpg" width="450px">
+</div>
+
+4. Feito isso, vá em "Open" e acesse sua EC2.
+
+### Como configurar a sua conta na AWS CLI após o acesso via Putty
+
+* Execute o comando "aws configure" no terminal
+* Informe a AWS Access Key ID
+* Informe a AWS Secret Access Key
+* A região (us-east-1)
+* O formato da saída (text ou json)
+
+-----
+
+## Como configurar o NFS no Linux
+
