@@ -1,4 +1,4 @@
-# 🖥️ Atividade do Programa de Bolsas da Compass.UOL 
+# 🖥️ Atividade do PB da Compass.UOL 
 
 <div align="center">
   <img src="/src/logo-compass.png" width="350px">
@@ -240,16 +240,21 @@ Para gerar uma chave pública no Linux basta usar a linha de comando:
 </div>
 
 4. Feito isso, vá em "Open" e acesse sua EC2.
+	
+<div align="center">
+	<img src="/src/putty-3.jpg" width="450px">
+</div>
 
 ### Como configurar a sua conta na AWS CLI após o acesso via Putty
 
 * Execute o comando "aws configure" no terminal
 * Informe a AWS Access Key ID
 * Informe a AWS Secret Access Key
-* A região (us-east-1)
+* A região (ex.: us-east-1)
 * O formato da saída (text ou json)
 
 -----
 
 ## Como configurar o NFS no Linux
+
 
