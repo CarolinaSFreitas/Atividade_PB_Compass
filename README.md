@@ -60,7 +60,8 @@ Na tela seguinte escolha a opção "Command Line Interface (CLI)", onde será cr
 </div> 
 
 4. Abrirá uma tela com as informações da chave de acesso, serão elas: a própria Access Key e a Secret access key. São duas informações cruciais para o acesso via AWS CLI, então você deve ir no botão "Download .csv file" onde estará armazenado essas duas chaves de acesso. **É de grande importância que esse Download seja feito**, pois a Secret access key não poderá ser acessada novamente. 
-Após o Download, salve o arquivo '.csv' em um local seguro e vá no botão "Done".
+
+5. Após o Download, salve o arquivo '.csv' em um local seguro e vá no botão "Done".
 
 <div align="center">
 <img src="/src/print-AMI5.jpg" width="950px">
@@ -281,7 +282,7 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
 	<img src="/src/efs-3.jpg" width="950px">
 </div>
 
-5. Na nova aba aberta, vá na sessão de "Access points" para criar um ponto de acesso ao seu EFS. Depois clique no botão "Create access points"
+5. Na nova aba aberta, vá na sessão de "Access points" para criar um ponto de acesso à seu EFS. Depois clique no botão "Create access points"
  
 <div align="center">
 	<img src="/src/efs-4.jpg" width="850px">
@@ -307,18 +308,18 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
 
 		yum -y install amazon-efs-utils
 	
-E depois:
-
-	mkdir /mnt/efs
+		mkdir /mnt/efs
 	
 <div align="center">
 	<img src="/src/efs-8.jpg" width="550px">
 </div>
 
 9. Agora que já temos o diretório de montagem criado, devemos executar o comando 'mount' no diretório. Mas antes disso, devemos voltar no serviço EFS no console AWS e copiar o valor do **DNS name do seu EFS**.
+ 
 <div align="center">
 	<img src="/src/efs-9.jpg" width="850px">
 </div>
+
    Depois de copiado, devemos executar o seguinte comando na AWS CLI:
    
    	sudo mount -t efs fs-0d87164e862a3b1c3.efs.us-east-1.amazonaws.com /mnt/efs
@@ -335,6 +336,134 @@ E depois:
 	<img src="/src/efs-11.jpg" width="450px">
 </div>
 
+-----
+
 # Como subir o Apache no seu servidor
 
+- Antes de fazermos a instalação do Apache, devemos atualizar os pacotes.
+	
+		sudo yum update
 
+- Após o update, execute:
+
+		sudo yum install httpd
+
+- Agora que instalamos o Apache, devemos iniciar ele usando o comando:
+	
+		sudo systemctl start httpd
+	
+- Para checar se o Apache está realmente ativo, use o comando: 
+
+		 sudo systemctl status httpd
+
+<div align="center">
+	<img src="/src/apache1.jpg" width="650px">
+</div>
+
+- Para acessar o Apache pelo seu navegador:
+ 
+    * Copie o IP Público da sua EC2
+
+<div align="center">
+	<img src="/src/apache3.jpg" width="850px">
+</div>
+
+   * Cole o IP Público no seu navegador
+
+<div align="center">
+	<img src="/src/apache2.jpg" width="850px">
+</div>
+
+## Criando script de validação do Apache que enviará o resultado dessa validação para o diretório EFS que criamos anteriormente com o nosso nome 
+
+* Escolha o caminho onde ficará salvo o seu shell script, nesse caso, eu criarei no '/home/ec2-user/apache_status' e o chamarei de 'check_apache.sh'
+
+<div align="center">
+	<img src="/src/script1.jpg" width="550px">
+</div>
+
+* Edite o arquivo .sh com seu editor de texto de preferência e insira o seguinte script:
+
+		#!/bin/bash
+		
+		export TZ=America/Sao_Paulo
+		DATE=$(date '+%D-%M-%Y %H:%M:%S')
+		
+		if systemctl is-active --quiet httpd; then
+       			STATUS="Online"
+        		MESSAGE="O Apache está online e rodando!"
+        		FILENAME="apache_online.txt"
+		else
+        		STATUS="Offline"
+       			MESSAGE="O Apache está offline."
+        		FILENAME="apache_offline.txt"
+		fi
+	
+		echo "$DATE httpd $STATUS - $MESSAGE" >> /mnt/efs/SeuNome/saida_script.txt 
+
+<div align="center">
+	<img src="/src/printscript.jpg" width="550px">
+</div>
+	
+* Para executar o script criado execute:
+
+		./check_apache.sh
+
+<div align="center">
+	<img src="/src/script2.jpg" width="550px">
+</div>
+
+## Como automatizar essa verificação do status do servidor Apache com o Cronie a cada 5 minutos
+
+* Instale o Cronie executando os seguintes comandos: 
+
+		sudo yum update -y
+		
+		sudo yum install cronie
+	
+Feito isso, inicie o Cronie:
+
+		sudo systemctl start cronie
+		
+Para verificar o status do Cronie:
+
+		sudo systemctl status crond
+		
+Após verificar que ele está como "Active (running)" execute:
+
+		sudo systemctl enable crond
+
+<div align="center">
+	<img src="/src/cronie.jpg" width="750px">
+</div>
+
+Feita a ativação dele, edite o arquivo da seguinte maneira:
+
+		sudo nano /etc/crontab
+		
+Aberto o editor, digite:
+
+	*/5 * * * * ec2-user apache_status/check_apache.sh >> /mnt/efs/SeuNome/saida_script.txt 2>&1
+
+<div align="center">
+	<img src="/src/crontab-cronie.jpg" width="750px">
+</div>
+
+Isso fará com que o script seja executado a cada 5 minutos e que sempre que isso ocorrer, a saída vá para o caminho do EFS 'mnt/efs/SeuNome/saida_script.txt'.
+
+
+*Caso você não tenha o diretório 'saida_script.txt', execute o comando abaixo dentro de '/mnt/efs/SeuNome/':*
+
+			mkdir saida_script.txt
+			
+Com isso feito você poderá verificar as saídas do script com:
+
+ 	sudo cat /mnt/efs/SeuNome/saida_script.txt
+
+<div align="center">
+	<img src="/src/cronie-saida.jpg" width="850px">
+</div>
+
+<div align="center">
+  <img src="/src/logo-compass.png" width="350px" margin-top="35px">
+</div>
