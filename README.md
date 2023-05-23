@@ -281,7 +281,7 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
 	<img src="/src/efs-3.jpg" width="950px">
 </div>
 
-5. Na nova aba aberta, vá na sessão de "Access points" para criar um ponto de acesso à seu EFS. Depois clique no botão "Create access points"
+5. Na nova aba aberta, vá na sessão de "Access points" para criar um ponto de acesso ao seu EFS. Depois clique no botão "Create access points"
  
 <div align="center">
 	<img src="/src/efs-4.jpg" width="850px">
