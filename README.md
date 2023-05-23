@@ -255,6 +255,86 @@ Para gerar uma chave pública no Linux basta usar a linha de comando:
 
 -----
 
-## Como configurar o NFS no Linux
+# Dentro do seu ambiente Linux
+
+O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado pela AWS. Ele fornece armazenamento de arquivos altamente disponível e escalável para cargas de trabalho baseadas em nuvem. O EFS é projetado para ser usado com instâncias do Amazon Elastic Compute Cloud (EC2) e permite que várias instâncias acessem simultaneamente o mesmo sistema de arquivos. O EFS tem uma compatibilidade nativa com o protocolo NFS, isso significa que você pode montar sistemas de arquivos EFS em suas instâncias EC2 usando o protocolo NFS, aproveitando as vantagens do armazenamento de arquivos compartilhado e escalável oferecido pelo EFS.
+
+## Como criar um EFS
+
+1. Busque pelo serviço EFS (Elastic File System) dentro do console AWS.
+
+<div align="center">
+	<img src="/src/efs-1.jpg" width="950px">
+</div>
+
+2. Vá em "Create file system"
+
+3. Escolha o nome do seu EFS (é opcional)
+
+<div align="center">
+	<img src="/src/efs-2.jpg" width="650px">
+</div>
+
+4. Com seu EFS criado, clique sobre o ID do seu EFS, abaixo do campo "File System ID"
+ 
+<div align="center">
+	<img src="/src/efs-3.jpg" width="950px">
+</div>
+
+5. Na nova aba aberta, vá na sessão de "Access points" para criar um ponto de acesso à seu EFS. Depois clique no botão "Create access points"
+ 
+<div align="center">
+	<img src="/src/efs-4.jpg" width="850px">
+</div>
+
+6. Coloque o nome no seu Ponto de acesso (é opcional) e vá no botão "Create access point" no fim da página.
+
+<div align="center">
+	<img src="/src/efs-5.jpg" width="650px">
+</div>
+
+7. Feito isso, volte para a aba do seu EFS e vá na sessão "Network" onde estão as informações de Security Group. Ali você deve colocar o seu SG criado anteriormente para sua EC2.
+
+<div align="center">
+	<img src="/src/efs-6.jpg" width="850px">
+</div>
+
+<div align="center">
+	<img src="/src/efs-7.jpg" width="850px">
+</div>
+
+8. Logado na sua EC2 via Putty, execute os comandos:
+
+		yum -y install amazon-efs-utils
+	
+E depois:
+
+	mkdir /mnt/efs
+	
+<div align="center">
+	<img src="/src/efs-8.jpg" width="550px">
+</div>
+
+9. Agora que já temos o diretório de montagem criado, devemos executar o comando 'mount' no diretório. Mas antes disso, devemos voltar no serviço EFS no console AWS e copiar o valor do **DNS name do seu EFS**.
+<div align="center">
+	<img src="/src/efs-9.jpg" width="850px">
+</div>
+   Depois de copiado, devemos executar o seguinte comando na AWS CLI:
+   
+   	sudo mount -t efs fs-0d87164e862a3b1c3.efs.us-east-1.amazonaws.com /mnt/efs
+	
+<div align="center">
+	<img src="/src/efs-10.jpg" width="750px">
+</div>
+
+10. Para criar um diretório dentro do EFS - nesse caso, com o seu nome - basta executar o comando:
+	
+		sudo mkdir /mnt/efs/SeuNome
+
+<div align="center">
+	<img src="/src/efs-11.jpg" width="450px">
+</div>
+
+# Como subir o Apache no seu servidor
 
 
