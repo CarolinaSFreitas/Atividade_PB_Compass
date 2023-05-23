@@ -374,6 +374,8 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
 	<img src="/src/apache2.jpg" width="850px">
 </div>
 
+-----
+
 ## Criando script de validação do Apache que enviará o resultado dessa validação para o diretório EFS que criamos anteriormente com o nosso nome 
 
 * Escolha o caminho onde ficará salvo o seu shell script, nesse caso, eu criarei no '/home/ec2-user/apache_status' e o chamarei de 'check_apache.sh'
@@ -405,13 +407,15 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
 	<img src="/src/printscript.jpg" width="550px">
 </div>
 	
-* Para executar o script criado execute:
+* Para executar o script criado, use o comando:
 
 		./check_apache.sh
 
 <div align="center">
 	<img src="/src/script2.jpg" width="550px">
 </div>
+
+-----
 
 ## Como automatizar essa verificação do status do servidor Apache com o Cronie a cada 5 minutos
 
@@ -464,6 +468,8 @@ Com isso feito você poderá verificar as saídas do script com:
 	<img src="/src/cronie-saida.jpg" width="850px">
 </div>
 
+-----
+
 <div align="center">
-  <img src="/src/logo-compass.png" width="350px" margin-top="35px">
+  <img src="/src/logo-compass.png" width="250px" margin-top="80px">
 </div>
