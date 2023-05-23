@@ -376,7 +376,7 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
 
 -----
 
-## Criando script de validação do Apache que enviará o resultado dessa validação para o diretório EFS que criamos anteriormente com o nosso nome 
+## Criando script de validação do Apache que enviará o resultado para o diretório EFS que criamos com o nosso nome 
 
 * Escolha o caminho onde ficará salvo o seu shell script, nesse caso, eu criarei no '/home/ec2-user/apache_status' e o chamarei de 'check_apache.sh'
 
