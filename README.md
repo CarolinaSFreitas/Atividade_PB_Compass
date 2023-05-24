@@ -441,7 +441,7 @@ Após verificar que ele está como "Active (running)" execute:
 	<img src="/src/cronie.jpg" width="750px">
 </div>
 
-Feita a ativação dele, edite o arquivo da seguinte maneira:
+* Feita a ativação dele, edite o arquivo da seguinte maneira:
 
 		sudo nano /etc/crontab
 		
@@ -460,7 +460,7 @@ Isso fará com que o script seja executado a cada 5 minutos e que sempre que iss
 
 			mkdir saida_script.txt
 			
-Com isso feito você poderá verificar as saídas do script com:
+* Com isso feito você poderá verificar as saídas do script com:
 
  	sudo cat /mnt/efs/SeuNome/saida_script.txt
 
