@@ -320,7 +320,7 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
 	<img src="/src/efs-9.jpg" width="850px">
 </div>
 
-   Depois de copiado, devemos executar o seguinte comando na AWS CLI:
+   Depois de copiado, devemos executar o seguinte comando no terminal:
    
    	sudo mount -t efs fs-0d87164e862a3b1c3.efs.us-east-1.amazonaws.com /mnt/efs
 	
