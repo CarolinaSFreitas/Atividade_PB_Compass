@@ -83,7 +83,7 @@ Na tela seguinte escolha a opção "Command Line Interface (CLI)", onde será cr
 
 -----
 
-# Criando a instância EC2 
+# ☁️ Criando a instância EC2 
 
 * Selecione o serviço de EC2 no console AWS e vá em "Instances" no menu lateral esquerdo. Na janela que será aberta vá no botão "Launch instances".
 
@@ -184,7 +184,7 @@ Será gerado o arquivo ".pem" com a sua chave privada, **guarde-o em segurança,
 
 -----
 
-## Gerando e anexando 1 elastic IP à instância EC2
+## 📍 Gerando e anexando 1 elastic IP à instância EC2
 1. Dentro do menu lateral esquerdo no serviço de EC2 vá em "Elastic IPs".
 Ali clique em "Allocate Elastic IP address" para gerar o seu Elastic IP. 
 
@@ -221,7 +221,7 @@ Com essas informações configuradas, vá em "Associate".
 
 -----
 
-## Gerando uma chave pública para acesso ao ambiente
+## 🔑 Gerando uma chave pública para acesso ao ambiente
 
 Para gerar uma chave pública no Linux basta usar a linha de comando:
 	"ssh-keygen -y -f /caminho/para/sua-chave-privada.pem > chave-publica.pub"
@@ -275,7 +275,7 @@ Para gerar uma chave pública no Linux basta usar a linha de comando:
 Antes de partirmos de fato para o ambiente Linux devemos criar um EFS no console AWS. 
 O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado pela AWS. Ele fornece armazenamento de arquivos altamente disponível e escalável para cargas de trabalho baseadas em nuvem. O EFS é projetado para ser usado com instâncias do Amazon Elastic Compute Cloud (EC2) e permite que várias instâncias acessem simultaneamente o mesmo sistema de arquivos. O EFS tem uma compatibilidade nativa com o protocolo NFS, isso significa que você pode montar sistemas de arquivos EFS em suas instâncias EC2 usando o protocolo NFS, aproveitando as vantagens do armazenamento de arquivos compartilhado e escalável oferecido pelo EFS.
 
-## Como criar um EFS
+## 📂 Como criar um EFS
 
 1. Busque pelo serviço EFS (Elastic File System) dentro do console AWS.
 
@@ -338,7 +338,9 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
    Depois de copiado, devemos executar o seguinte comando no terminal:
 
    	sudo mount -t efs fs-0d87164e862a3b1c3.efs.us-east-1.amazonaws.com /mnt/efs
-	
+
+**⚠️ Não se esqueça de substituir o DNS name do EFS pelo DNS name do EFS do seu EFS**
+
 <div align="center">
 	<img src="/src/efs-10.jpg" width="750px">
 </div>
@@ -353,7 +355,7 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
 
 -----
 
-# Como subir o Apache no seu servidor
+# 🌐 Como subir o Apache no seu servidor
 
 - Antes de fazermos a instalação do Apache, devemos atualizar os pacotes.
 	
@@ -391,7 +393,7 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
 
 -----
 
-## Criando script de validação do Apache que enviará o resultado para o diretório EFS que criamos com o nosso nome 
+## ✅ Criando script de validação do Apache que enviará o resultado para o diretório EFS que criamos com o nosso nome 
 
 * Escolha o caminho onde ficará salvo o seu shell script, nesse caso, eu criarei no '/home/ec2-user/apache_status' e o chamarei de 'check_apache.sh'
 
@@ -432,7 +434,7 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
 
 -----
 
-## Como automatizar essa verificação do status do servidor Apache com o Cronie a cada 5 minutos
+## ⏱ Como automatizar essa verificação do status do servidor Apache com o Cronie a cada 5 minutos
 
 * Instale o Cronie executando os seguintes comandos: 
 
@@ -485,7 +487,7 @@ Isso fará com que o script seja executado a cada 5 minutos e que sempre que iss
 
 -----
 
-# Como deixar automatizado no boot da EC2 a montagem do EFS e a inicialização do Apache
+# 🏁 Como deixar automatizado no boot da EC2 a montagem do EFS e a inicialização do Apache
 
 1. Vá até o caminho do arquivo de scripts de inicialização do sistema:
 
@@ -507,7 +509,7 @@ E para editá-lo use o comando:
 		sudo systemctl start httpd
 		sudo systemctl status httpd
 
-**OBS: Não se esqueça de substituir o DNS name do EFS pelo DNS name do EFS do seu EFS igual a como fizemos antes na montagem manual!**
+**⚠️ Não se esqueça de substituir o DNS name do EFS pelo DNS name do EFS do seu EFS igual a como fizemos antes na montagem manual!**
 
 4. Feito isso, torne o .sh em um executável com o comando:
 
