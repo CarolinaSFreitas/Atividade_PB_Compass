@@ -296,7 +296,7 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
 
 7. Feito isso, volte para a aba do seu EFS e vá na sessão "Network" onde estão as informações de Security Group. Ali você deve colocar o seu SG criado anteriormente para sua EC2.
 
-<div align="center">
+<div align="center" margin-bottom="5px">
 	<img src="/src/efs-6.jpg" width="850px">
 </div>
 
