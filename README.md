@@ -322,7 +322,7 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
 
    	sudo mount -t efs fs-0d87164e862a3b1c3.efs.us-east-1.amazonaws.com /mnt/efs
 
-**⚠️ Não se esqueça de substituir o DNS name do EFS pelo DNS name do EFS do seu EFS**
+**⚠️ Não se esqueça de substituir o DNS name do EFS pelo DNS name do EFS do seu EFS⚠️**
 
 <div align="center">
 	<img src="/src/efs-10.jpg" width="750px">
@@ -492,7 +492,7 @@ E para editá-lo use o comando:
 		sudo systemctl start httpd
 		sudo systemctl status httpd
 
-**⚠️ Não se esqueça de substituir o DNS name do EFS pelo DNS name do EFS do seu EFS igual a como fizemos antes na montagem manual!**
+**⚠️ Não se esqueça de substituir o DNS name do EFS pelo DNS name do EFS do seu EFS igual a como fizemos antes na montagem manual!⚠️**
 
 4. Feito isso, torne o .sh em um executável com o comando:
 
