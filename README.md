@@ -20,7 +20,7 @@
 para o seu diretorio no nfs;
 - O script deve conter - Data HORA + nome do serviço + Status + mensagem
 personalizada de ONLINE ou offline;
-- O script deve gerar 2 arquivos de saida: 1 para o serviço online e 1 para o serviço
+- O script deve gerar 2 arquivos de saída: 1 para o serviço online e 1 para o serviço
 OFFLINE;
 - Preparar a execução automatizada do script a cada 5 minutos.
 
@@ -31,7 +31,7 @@ OFFLINE;
 
 ##
 
-1. Selecione o serviço de IAM (Identity and Access Management) dentro do console AWS e no menu esquerdo lateral vá em Access Management > Users, na tela de users vá no botão "Add Users" em azul.
+1. Selecione o serviço de IAM (Identity and Access Management) dentro do console AWS e no menu esquerdo lateral acesse o Access Management -> Users, na tela de users vá no botão "Add Users" em azul.
 
 <div align="center">
 <img src="/src/print-AMI1.jpg" width="950px">
@@ -97,7 +97,7 @@ Com a janela de criação de instâncias EC2 aberta, comece a preencher os campo
 <img src="/src/print-EC23.2.jpg" width="550px">
 </div>
 
-* Em "Key pair(login)" escolha o par de chaves que dará acesso a sua instância EC2. Se não tiver um par de chaves já criado, clique em "Create key pair".
+* Em "Key pair(login)" escolha o par de chaves que dará acesso a sua instância EC2, se não tiver um par de chaves já criado, clique em "Create key pair".
 Na tela que se abrirá digite o nome do seu par de chaves, seguido do tipo - RSA - e o formato da chave privada como ".pem".
 
 <div align="center">
@@ -150,7 +150,7 @@ Será gerado o arquivo ".pem" com a sua chave privada, **guarde-o em segurança,
 <img src="/src/print-volume.jpg" width="550px">
 </div>
 
-* Com tudo isso feito, vá no botão "Launch instance" abaixo do sumário da sua instância em criação (onde você pode conferir as configurações feitas por você de forma mais resumida) para criar a sua instância.
+* Com tudo isso feito, vá no botão "Launch instance" abaixo do sumário da sua instância em criação (onde você pode conferir as configurações feitas por você de forma mais resumida) para finalizar a criação da sua instância.
 
 <div align="center">
 <img src="/src/print-summary.jpg" width="245px">
@@ -209,9 +209,6 @@ Com essas informações configuradas, vá em "Associate".
 
 ## 🔑 Gerando uma chave pública para acesso ao ambiente
 
-Para gerar uma chave pública no Linux basta usar a linha de comando:
-	"ssh-keygen -y -f /caminho/para/sua-chave-privada.pem > chave-publica.pub"
-
 1. No Windows, abra o programa PuttyGen. Vá em "Load" e carregue o seu arquivo ".pem" do seu Key Pair que está vinculado à sua instância EC2.
 
 <div align="center">
@@ -220,7 +217,7 @@ Para gerar uma chave pública no Linux basta usar a linha de comando:
 
 2. Clique primeiro no botão "Save public key" para gerar a sua chave pública. Será criado um arquivo com essa chave, salve no local desejado, ela será o que irá possibilitar o acesso de outras pessoas à sua instância.
 
-3. Clique em "Save private key" e será gerada uma chave em ".ppk", porque ao fazer isso convertemos o arquivo ".pem" em ".ppk" para podermos utilizar via Putty e, assim, executar o acesso na sua instância EC2. Salve no local desejado.
+3. Clique em "Save private key" e será gerada uma chave em ".ppk", porque ao fazer isso convertemos o arquivo ".pem" em ".ppk" (PuTTY Private Key) para podermos utilizar via Putty e, assim, executar o acesso na sua instância EC2. Salve no local desejado.
 
 <div align="center">
 	<img src="/src/puttygen-2.jpg" width="450px">
