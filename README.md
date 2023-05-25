@@ -321,7 +321,7 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
 </div>
 
    Depois de copiado, devemos executar o seguinte comando no terminal:
-   
+
    	sudo mount -t efs fs-0d87164e862a3b1c3.efs.us-east-1.amazonaws.com /mnt/efs
 	
 <div align="center">
@@ -466,6 +466,58 @@ Isso fará com que o script seja executado a cada 5 minutos e que sempre que iss
 
 <div align="center">
 	<img src="/src/cronie-saida.jpg" width="850px">
+</div>
+
+-----
+
+## Como deixar automatizado no reboot da EC2 a montagem do EFS e a inicialização do Apache
+
+1. Vá até o caminho do arquivo de inicialização do sistema através do caminho:
+
+		cd /etc/init.d
+
+2. Crie um novo shell script com seu nome de preferência, ele fará com que durante a inicialização da EC2 a montagem do EFS seja feita e o Apache ativado:
+
+ 		touch init-sys.sh
+		
+E para editá-lo use o comando:
+
+ 		sudo nano init-sys.sh
+
+3. Dentro do seu editor de texto de prefência coloque os comandos que usamos anteriormente para fazer a montagem e para ativar o Apache:
+
+		#!/bin/bash
+		sudo mount -t efs fs-0d87164e862a3b1c3.efs.us-east-1.amazonaws.com:/ /mnt/efs
+		sudo systemctl enable httpd
+		sudo systemctl start httpd
+		sudo systemctl status httpd
+
+**OBS: Não se esqueça de substituir o DNS name do EFS pelo DNS name do EFS do seu EFS igual a como fizemos antes na montagem manual!**
+
+4. Feito isso, torne o .sh em um executável com o comando:
+
+		 sudo chmod +x init-sys.sh
+
+5. Dentro do diretório 'init.d' execute os comandos: 
+
+		sudo chmod +x /etc/init.d/init-sys.sh
+		sudo ln -s /etc/init.d/init-sys.sh /etc/rc.d/rc3.d/S99init-sys.sh
+		sudo reboot
+		
+Com tudo isso feito, você terá automatizado a montagem do EFS e a inicialização do Apache durante o boot do EC2. 
+Como ter certeza disso? Rode os seguintes comandos no seu terminal para fazer a checagem: 
+
+	sudo systemctl status httpd
+	sudo cd /mnt/efs
+	sudo ls
+	sudo cat /mnt/efs/SeuNome/saida_script.txt
+
+<div align="center">
+  <img src="/src/autom1.png" width="250px" margin-top="80px">
+</div>
+
+<div align="center">
+  <img src="/src/autom2.png" width="250px" margin-top="80px">
 </div>
 
 -----
