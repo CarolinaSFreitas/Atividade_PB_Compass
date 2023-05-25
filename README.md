@@ -37,7 +37,7 @@ OFFLINE;
 <img src="/src/print-AMI1.jpg" width="950px">
 </div>
 
-2. Escolha o nome do usuário e vá no botão "Next". Na tela seguinte clique novamente no botão "Next e na próxima dela em "Create user".
+2. Escolha o nome do usuário e vá no botão "Next". Na tela seguinte clique novamente no botão "Next e na próxima tela em "Create user".
 
 <div align="center">
 <img src="/src/print-AMI2.jpg" width="950px">
@@ -46,7 +46,7 @@ OFFLINE;
 3. Com o usuário criado, o selecione na lista de Users clicando sobre o nome. Abrirá o sumário do usuário, onde ficam todas as informações sobre ele. Aqui clique em "Security credentials" e no botão "Create access key" na sessão "Access Keys".
 
 <div align="center">
-<img src="/src/print-AMI3.1.jpg" width="950px">
+<img src="/src/print-AMI3.1.jpg" width="950px" margin-bottom="5px">
                                              
 <img src="/src/print-AMI3.2.jpg" width="950px">
 </div>
