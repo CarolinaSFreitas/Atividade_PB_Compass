@@ -360,7 +360,7 @@ O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado p
 	<img src="/src/apache1.jpg" width="650px">
 </div>
 
-- Para acessar o Apache pelo seu navegador:
+* Para acessar o Apache pelo seu navegador:
  
     * Copie o IP Público da sua EC2
 
