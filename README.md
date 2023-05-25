@@ -4,6 +4,20 @@
   <img src="/src/logo-compass.png" width="350px">
 </div>
 
+##
+
+🧭 [Criando instância EC2](https://github.com/CarolinaSFreitas/Atividade_PB_Compass/tree/main#criando-a-inst%C3%A2ncia-ec2 "Criando instância EC2") • 
+[Gerando e anexando um Elastic IP](https://github.com/CarolinaSFreitas/Atividade_PB_Compass#gerando-e-anexando-1-elastic-ip-%C3%A0-inst%C3%A2ncia-ec2 "Gerando e anexando elastic IP à instância EC2") • 
+[Criando uma chave pública](https://github.com/CarolinaSFreitas/Atividade_PB_Compass#gerando-uma-chave-p%C3%BAblica-para-acesso-ao-ambiente "Gerando uma chave pública para acesso ao ambiente") • 
+[Acesso via Putty](https://github.com/CarolinaSFreitas/Atividade_PB_Compass#como-acessar-via-putty "Como acessar via Putty") • 
+[Criar um EFS](https://github.com/CarolinaSFreitas/Atividade_PB_Compass/tree/main#como-criar-um-efs "Como criar um EFS") • 
+[Apache no seu servidor](https://github.com/CarolinaSFreitas/Atividade_PB_Compass/tree/main#como-subir-o-apache-no-seu-servidor "Como subir o Apache no seu servidor") • 
+[Script de validação do Apache](https://github.com/CarolinaSFreitas/Atividade_PB_Compass/tree/main#criando-script-de-valida%C3%A7%C3%A3o-do-apache-que-enviar%C3%A1-o-resultado-para-o-diret%C3%B3rio-efs-que-criamos-com-o-nosso-nome "Script de validação do Apache") • 
+[Automatização do script a cada 5 min.](https://github.com/CarolinaSFreitas/Atividade_PB_Compass/tree/main#como-automatizar-essa-verifica%C3%A7%C3%A3o-do-status-do-servidor-apache-com-o-cronie-a-cada-5-minutos "Automatização do script de validação do Apache a cada 5 min.") • 
+[Automatização de montagem EFS e Ativação do Apache no boot](https://github.com/CarolinaSFreitas/Atividade_PB_Compass/tree/main#como-automatizar-essa-verifica%C3%A7%C3%A3o-do-status-do-servidor-apache-com-o-cronie-a-cada-5-minutos "Automatização de montagem EFS e Ativação do Apache no boot") • 🧭
+
+##
+
 ## Requisitos AWS:
 - Gerar uma chave pública para acesso ao ambiente;
 - Criar 1 instância EC2 com o sistema operacional Amazon Linux 2 (Família t3.small,
