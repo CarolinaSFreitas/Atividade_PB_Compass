@@ -472,7 +472,7 @@ Isso fará com que o script seja executado a cada 5 minutos e que sempre que iss
 
 ## Como deixar automatizado no boot da EC2 a montagem do EFS e a inicialização do Apache
 
-1. Vá até o caminho do arquivo de inicialização do sistema através do caminho:
+1. Vá até o caminho do arquivo de inicialização do sistema:
 
 		cd /etc/init.d
 
