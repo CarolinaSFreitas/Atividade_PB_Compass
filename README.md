@@ -258,6 +258,7 @@ Para gerar uma chave pública no Linux basta usar a linha de comando:
 
 # Dentro do seu ambiente Linux
 
+Antes de partirmos de fato para o ambiente Linux devemos criar um EFS no console AWS. 
 O Amazon EFS é um serviço de armazenamento de arquivos totalmente gerenciado pela AWS. Ele fornece armazenamento de arquivos altamente disponível e escalável para cargas de trabalho baseadas em nuvem. O EFS é projetado para ser usado com instâncias do Amazon Elastic Compute Cloud (EC2) e permite que várias instâncias acessem simultaneamente o mesmo sistema de arquivos. O EFS tem uma compatibilidade nativa com o protocolo NFS, isso significa que você pode montar sistemas de arquivos EFS em suas instâncias EC2 usando o protocolo NFS, aproveitando as vantagens do armazenamento de arquivos compartilhado e escalável oferecido pelo EFS.
 
 ## Como criar um EFS
