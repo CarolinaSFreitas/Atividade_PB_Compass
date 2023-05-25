@@ -71,7 +71,7 @@ Na tela seguinte escolha a opção "Command Line Interface (CLI)", onde será cr
 
 ## Criando a instância EC2 
 
-+ Selecione o serviço de EC2 no console AWS e vá em "Instances" no menu lateral esquerdo. Na janela que será aberta vá no botão "Launch instances".
+* Selecione o serviço de EC2 no console AWS e vá em "Instances" no menu lateral esquerdo. Na janela que será aberta vá no botão "Launch instances".
 
 <div align="center">
 <img src="/src/print-EC21.jpg" width="950px">
@@ -83,21 +83,21 @@ Com a janela de criação de instâncias EC2 aberta, comece a preencher os campo
 <img src="/src/print-EC21.1.jpg" width="950px">
 </div>
 
-+ No campo "Name" digite o nome da sua EC2.
+* No campo "Name" digite o nome da sua EC2.
 
-+ Em "Application and OS Images (Amazon Machine Image)" busque pela AMI "Amazon Linux 2". Abrirá uma janela com o resultado da sua pesquisa, então escolha a correta clicando no botão "Select".
+* Em "Application and OS Images (Amazon Machine Image)" busque pela AMI "Amazon Linux 2". Abrirá uma janela com o resultado da sua pesquisa, então escolha a correta clicando no botão "Select".
 
 <div align="center">
 <img src="/src/print-EC23.1.jpg" width="550px">
 </div>
 
-+ No campo "Instance type" escolha a família da máquina que rodará a sua EC2, a "t3.small".
+* No campo "Instance type" escolha a família da máquina que rodará a sua EC2, a "t3.small".
 
 <div align="center">
 <img src="/src/print-EC23.2.jpg" width="550px">
 </div>
 
-+ Em "Key pair(login)" escolha o par de chaves que dará acesso a sua instância EC2. Se não tiver um par de chaves já criado, clique em "Create key pair".
+* Em "Key pair(login)" escolha o par de chaves que dará acesso a sua instância EC2. Se não tiver um par de chaves já criado, clique em "Create key pair".
 Na tela que se abrirá digite o nome do seu par de chaves, seguido do tipo - RSA - e o formato da chave privada como ".pem".
 
 <div align="center">
@@ -106,7 +106,7 @@ Na tela que se abrirá digite o nome do seu par de chaves, seguido do tipo - RSA
 
 Será gerado o arquivo ".pem" com a sua chave privada, **guarde-o em segurança, pois é o que dá acesso à sua instância EC2**.
 
-+ Em "Network settings" você pode selecionar um Security group já criado ou criar um, seguindo os seguintes passos:
+* Em "Network settings" você pode selecionar um Security group já criado ou criar um, seguindo os seguintes passos:
 	1. Escolha o nome do seu Security group e descreva para que ele servirá.
 	2. Em "Inbound security groups rules" você aplica as regras de acesso às portas de comunicação desejadas. Nesse caso, escolheremos as seguintes regras:
 
@@ -144,13 +144,13 @@ Será gerado o arquivo ".pem" com a sua chave privada, **guarde-o em segurança,
 <img src="/src/print-rule7.jpg" width="450px">
 </div>
 
-+ Em "Configure storage" defina o volume do armazenamento e o tipo de disco. Nesse caso, usaremos  16GB e gp2 (General purpose SSD).
+* Em "Configure storage" defina o volume do armazenamento e o tipo de disco. Nesse caso, usaremos  16GB e gp2 (General purpose SSD).
 
 <div align="center">
 <img src="/src/print-volume.jpg" width="550px">
 </div>
 
-+ Com tudo isso feito, vá no botão "Launch instance" abaixo do sumário da sua instância em criação (onde você pode conferir as configurações feitas por você de forma mais resumida) para criar a sua instância.
+* Com tudo isso feito, vá no botão "Launch instance" abaixo do sumário da sua instância em criação (onde você pode conferir as configurações feitas por você de forma mais resumida) para criar a sua instância.
 
 <div align="center">
 <img src="/src/print-summary.jpg" width="245px">
