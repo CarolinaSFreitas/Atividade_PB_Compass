@@ -122,22 +122,22 @@ Será gerado o arquivo ".pem" com a sua chave privada, **guarde-o em segurança,
 | Custom TCP   | TCP      | 443        | Anywhere    | 0.0.0.0/0   |
 ##
 
-<div align="center">
+<div align="center" margin-bottom="5px">
 <img src="/src/print-rule1.jpg" width="450px">
 </div>
-<div align="center">
+<div align="center" margin-bottom="5px">
 <img src="/src/print-rule2.jpg" width="450px">
 </div>
-<div align="center">
+<div align="center" margin-bottom="5px">
 <img src="/src/print-rule3.jpg" width="450px">
 </div>
-<div align="center">
+<div align="center" margin-bottom="5px">
 <img src="/src/print-rule4.jpg" width="450px">
 </div>
-<div align="center">
+<div align="center" margin-bottom="5px">
 <img src="/src/print-rule5.jpg" width="450px">
 </div>
-<div align="center">
+<div align="center" margin-bottom="5px">
 <img src="/src/print-rule6.jpg" width="450px">
 </div>
 <div align="center">
@@ -513,11 +513,11 @@ Como ter certeza disso? Rode os seguintes comandos no seu terminal para fazer a 
 	sudo cat /mnt/efs/SeuNome/saida_script.txt
 
 <div align="center">
-  <img src="/src/autom1.png" width="250px" margin-top="80px">
+  <img src="/src/autom1.jpg" width="550px" margin-bottom="5px">
 </div>
 
 <div align="center">
-  <img src="/src/autom2.png" width="250px" margin-top="80px">
+  <img src="/src/autom2.jpg" width="550px">
 </div>
 
 -----
