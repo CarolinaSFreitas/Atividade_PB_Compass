@@ -83,7 +83,7 @@ Na tela seguinte escolha a opção "Command Line Interface (CLI)", onde será cr
 
 -----
 
-## Criando a instância EC2 
+# Criando a instância EC2 
 
 * Selecione o serviço de EC2 no console AWS e vá em "Instances" no menu lateral esquerdo. Na janela que será aberta vá no botão "Launch instances".
 
